@@ -900,6 +900,11 @@ public class RecordingService extends Service {
         int x = activeArray.left + (int) (nx * activeArray.width());
         int y = activeArray.top + (int) (ny * activeArray.height());
 
+        // Clamp coordinates to active array bounds before creating rectangle
+        // This prevents IllegalArgumentException when normalized coords go out of bounds (>1.0)
+        x = Math.max(activeArray.left, Math.min(activeArray.right, x));
+        y = Math.max(activeArray.top, Math.min(activeArray.bottom, y));
+
         FLog.d(TAG, "Mapped to sensor coords: " + x + ", " + y + " (active array: " + activeArray + ")");
 
         // Create a small region around the tap point
