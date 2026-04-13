@@ -1839,15 +1839,15 @@
                     </div>
                 </div>
                 <div class="modal-section">
-                    <div class="modal-section-title">Usage</div>
+                    <div class="modal-section-title">Usage & Estimate</div>
                     <div class="modal-rows-group">
                         <div class="modal-row-container">
-                            <div class="modal-row-label">Consumed</div>
-                            <div class="modal-row-value">${currentStatus.battery.consumed}</div>
+                            <div class="modal-row-label">Consumed Since Start</div>
+                            <div class="modal-row-value">${currentStatus.battery.consumed}%</div>
                         </div>
                         <div class="modal-row-container">
                             <div class="modal-row-label">Remaining Time</div>
-                            <div class="modal-row-value">${currentStatus.battery.remainingHours > 0 ? currentStatus.battery.remainingHours.toFixed(1) + 'h' : 'N/A'}</div>
+                            <div class="modal-row-value" style="color: ${currentStatus.battery.remainingHours > 0 && currentStatus.battery.remainingHours < 2 ? '#f85149' : '#58a6ff'};">${currentStatus.battery.remainingHours > 0 ? currentStatus.battery.remainingHours.toFixed(1) + 'h' : 'N/A'}</div>
                         </div>
                     </div>
                 </div>
@@ -1863,7 +1863,7 @@
                 
                 <div class="modal-info-box">
                     <div class="modal-info-text">
-                        ℹ️ When battery drops to or below this percentage, a warning will be displayed. Valid range: 5-100%
+                        ℹ️ Remaining time is estimated based on real-world streaming consumption rates and your device's battery capacity. Battery life varies depending on device usage, network conditions, and recording quality. When battery drops to or below the warning percentage, an alert will be displayed.
                     </div>
                 </div>
             `;
