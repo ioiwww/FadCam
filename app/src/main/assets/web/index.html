@@ -82,7 +82,7 @@
 
     <!-- Profile Dropdown (positioned at root for proper z-index stacking) -->
     <div class="profile-dropdown" id="profileDropdown">
-        <div class="profile-item" onclick="showSecuritySettingsModal()">
+        <div class="profile-item" id="profileSecurityItem" onclick="showSecuritySettingsModal()">
             <i class="fas fa-shield-alt"></i> Security
         </div>
         <div class="profile-item" id="profileLogoutItem" onclick="logoutNow()">
@@ -5682,6 +5682,13 @@
                                     FadCamRemote.isCloudMode();
                     const logoutIcon  = document.getElementById('profileLogoutIcon');
                     const logoutLabel = document.getElementById('profileLogoutLabel');
+                    const securityItem = document.getElementById('profileSecurityItem');
+                    
+                    // Hide Security Settings button in cloud mode (local-only feature)
+                    if (securityItem) {
+                        securityItem.style.display = isCloud ? 'none' : 'flex';
+                    }
+                    
                     if (isCloud) {
                         if (logoutIcon)  logoutIcon.className  = 'fas fa-lock';
                         if (logoutLabel) logoutLabel.textContent = 'Lock Stream';
